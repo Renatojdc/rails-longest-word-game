@@ -1,5 +1,9 @@
-<form action="">
-  <h2>New game</h2>
+<h2>New game</h2>
   <p> Here is your grid: </p>
   <%= @letters %>
+    <br><br>
+<form action="/score" method="TODO" data-turbo="false">
+  <p> What is your longest word? </p>
+  <input type="text" class="user-input">
+  <input type="submit" class="submit btn btn-primary" value="Submit">
 </form>
