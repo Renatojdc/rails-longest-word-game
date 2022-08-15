@@ -2,8 +2,10 @@
   <p> Here is your grid: </p>
   <%= @letters %>
     <br><br>
-<form action="/score" method="TODO" data-turbo="false">
+<form action="/score" method="post" data-turbo="false">
   <p> What is your longest word? </p>
-  <input type="text" class="user-input">
-  <input type="submit" class="submit btn btn-primary" value="Submit">
+  <input type="text" class="user-input" name="input">
+  <input type="submit" class="submit btn btn-primary" value="Play">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
 </form>
