@@ -1,2 +1,12 @@
 <h2>******** Now your results ********</h2>
-<%= @english_word %>
+<h3>Result</h3>
+<% if @english_word == true %>
+<%=  "Congratulations! #{@user_input} is valid word!" %>
+<%= link_to "Play again!", new_path, class: "btn btn-primary" %>
+<% elsif @include == false %>
+<%= "Sorry. I can't build a word with #{@user_input}." %>
+<%= link_to "Play again!", new_path, class: "btn btn-primary" %>
+<% else %>
+<%= "Sorry. #{@user_input} is not a word." %>
+<%= link_to "Play again!", new_path, class: "btn btn-primary" %>
+<% end %>

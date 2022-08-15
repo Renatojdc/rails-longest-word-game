@@ -7,10 +7,10 @@ class GamesController < ApplicationController
   end
 
   def score
-    user_input = params[:input]
-    word = params[:letters]
-    @include = include?(word, user_input)
-    @english_word = english_word?(user_input)
+    @user_input = params[:input]
+    @word = params[:letters]
+    @include = include?(@word, @user_input)
+    @english_word = english_word?(@user_input)
     # if @letters.include?(user_input) ? @score = english_word?(user_input) : @score = 'Invalid word. Try again.'
   end
 
