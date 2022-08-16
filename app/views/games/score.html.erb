@@ -1,12 +1,32 @@
-<h2>******** Now your results ********</h2>
-<h3>Result</h3>
-<% if @include == true && @english_word == true %>
-<%=  "Congratulations! #{@user_input} is valid word!" %>
-<%= link_to "Play again!", new_path %>
-<% elsif @include == false %>
-<%= "Sorry. I can't build a word with #{@user_input}." %>
-<%= link_to "Play again!", new_path %>
-<% elsif @english_word == false %>
-<%= "Sorry. #{@user_input} is not a english word." %>
-<%= link_to "Play again!", new_path %>
-<% end %>
+<div class="container m-2 p-2">
+  <h2>******** Now your results ********</h2>
+  <h3>Result</h3>
+  <% finish = Time.now %>
+
+  <% if @included %>
+    <% if @english_word %>
+      <p><strong>Congratulations!</strong> <%= @user_input %> is a valid English word!</p>
+      <p>Your time was <strong><%="#{(Time.now - Time.at(@start_time.to_i)).round(2)}"%></strong> seconds</p>
+      <p>Your word has <%=@user_input.length%> letters! </p>
+      <p>You scored <%=(@user_input.length/(Time.now - Time.at(@start_time.to_i))*10).round(2)%> points.</p>
+      <%= link_to "Go back to the Home page", home_path %>
+    <% else %>
+      <p>Sorry but <strong><%= @user_input %></strong> does not seem to be a valid English word...</p>
+      <%= link_to "Try again.", new_path %>
+    <% end %>
+  <% else %>
+    <p>Sorry but <strong><%= @user_input %></strong> can't be built out of <%= @word %></p>
+    <%= link_to "Try again.", new_path %>
+  <% end %>
+</div>
+
+  <%# <% if @word.empty? %>
+    <%# <%=  "Congratulations! #{@user_input} is valid word!" %>
+    <%# <%= link_to "Play again!", new_path %>
+  <%# <% elsif @include == false %>
+    <%# <%= "Sorry. I can't build a word with #{@user_input}." %>
+    <%# <%= link_to "Play again!", new_path %>
+  <%# <% elsif @english_word == false %>
+    <%# <%= "Sorry. #{@user_input} is not a english word." %>
+    <%# <%= link_to "Play again!", new_path %>
+  <%# <% end %>

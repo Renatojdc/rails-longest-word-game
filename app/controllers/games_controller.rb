@@ -11,7 +11,6 @@ class GamesController < ApplicationController
     @word = params[:letters]
     @include = include?(@word, @user_input)
     @english_word = english_word?(@user_input)
-    # if @letters.include?(user_input) ? @score = english_word?(user_input) : @score = 'Invalid word. Try again.'
   end
 
   def home
@@ -19,9 +18,9 @@ class GamesController < ApplicationController
 
   private
 
-  def include?(word, letters)
-    word.chars.all? do |letter|
-      word.count(letter) <= letters.count(letter)
+  def include?(user_input, letters)
+    user_input.chars.all? do |letter|
+      user_input.count(letter) <= letters.count(letter)
     end
   end
 
